@@ -1,0 +1,12 @@
+streamlit
+pandas
+pypdf
+openai
+pgvector
+psycopg2-binary
+python-dotenv
+langchain # For text splitting if needed, or implement custom
+sentence-transformers
+deepeval
+pytest
+pytest-html

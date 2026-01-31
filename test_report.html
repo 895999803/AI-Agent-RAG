@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG System Test Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .summary { display: flex; gap: 20px; margin: 20px 0; }
+        .metric { background-color: #e0e0e0; padding: 10px; border-radius: 5px; }
+        .test-table { width: 100%; border-collapse: collapse; }
+        .test-table th, .test-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .test-table th { background-color: #f2f2f2; }
+        .status-pass { color: green; font-weight: bold; }
+        .status-fail { color: red; font-weight: bold; }
+        .status-skip { color: orange; font-weight: bold; }
+        .status-error { color: darkred; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>RAG System Test Report</h1>
+        <p><strong>Generated:</strong> 2026-01-31T16:06:24.000000</p>
+        <p><strong>LLM Model:</strong> allenai/molmo-2-8b:free</p>
+    </div>
+    
+    <div class="summary">
+        <div class="metric">
+            <h3>Total Tests</h3>
+            <p>20</p>
+        </div>
+        <div class="metric">
+            <h3>Passed</h3>
+            <p class="status-pass">8</p>
+        </div>
+        <div class="metric">
+            <h3>Failed</h3>
+            <p class="status-fail">3</p>
+        </div>
+        <div class="metric">
+            <h3>Skipped</h3>
+            <p class="status-skip">9</p>
+        </div>
+        <div class="metric">
+            <h3>Errors</h3>
+            <p class="status-error">0</p>
+        </div>
+        <div class="metric">
+            <h3>Success Rate</h3>
+            <p>40.0%</p>
+        </div>
+    </div>
+    
+    <table class="test-table">
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Execution Time</th>
+                <th>Details/Error</th>
+            </tr>
+        </thead>
+        <tbody>
+                    <tr>
+                        <td>TC001</td>
+                        <td>Database Connection Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>0.03s</td>
+                        <td>Database connection successful</td>
+                    </tr>
+                    <tr>
+                        <td>TC002</td>
+                        <td>Database Table Creation Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>0.06s</td>
+                        <td>Table created successfully</td>
+                    </tr>
+                    <tr>
+                        <td>TC003</td>
+                        <td>Database Table Skip Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>0.05s</td>
+                        <td>Table creation skipped successfully</td>
+                    </tr>
+                    <tr>
+                        <td>TC004</td>
+                        <td>Document Processing Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Test document not found</td>
+                    </tr>
+                    <tr>
+                        <td>TC005</td>
+                        <td>Embedding Generation Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>4.90s</td>
+                        <td>Generated embedding with dimension 384</td>
+                    </tr>
+                    <tr>
+                        <td>TC006</td>
+                        <td>Embedding Storage Test</td>
+                        <td class="status-fail">FAIL</td>
+                        <td>0.08s</td>
+                        <td>expected 384 dimensions, not 3
+</td>
+                    </tr>
+                    <tr>
+                        <td>TC007</td>
+                        <td>Duplicate Content Detection Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>0.08s</td>
+                        <td>Duplicate content detected correctly</td>
+                    </tr>
+                    <tr>
+                        <td>TC008</td>
+                        <td>New Content Storage Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>0.10s</td>
+                        <td>New content stored successfully</td>
+                    </tr>
+                    <tr>
+                        <td>TC009</td>
+                        <td>Similar Document Retrieval Test</td>
+                        <td class="status-fail">FAIL</td>
+                        <td>0.17s</td>
+                        <td>different vector dimensions 384 and 3
+</td>
+                    </tr>
+                    <tr>
+                        <td>TC010</td>
+                        <td>LLM Answer Generation Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>2.02s</td>
+                        <td>Generated answer with 265 characters</td>
+                    </tr>
+                    <tr>
+                        <td>TC011</td>
+                        <td>Empty Query Handling Test</td>
+                        <td class="status-pass">PASS</td>
+                        <td>0.00s</td>
+                        <td>Empty query handled correctly</td>
+                    </tr>
+                    <tr>
+                        <td>TC012</td>
+                        <td>Large Document Processing Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                    <tr>
+                        <td>TC013</td>
+                        <td>Multiple Document Ingestion Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                    <tr>
+                        <td>TC014</td>
+                        <td>Database Query Performance Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                    <tr>
+                        <td>TC015</td>
+                        <td>Error Handling Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                    <tr>
+                        <td>TC016</td>
+                        <td>Memory Usage Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                    <tr>
+                        <td>TC017</td>
+                        <td>Concurrent Access Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                    <tr>
+                        <td>TC018</td>
+                        <td>Answer Quality Test (DeepEval)</td>
+                        <td class="status-pass">PASS</td>
+                        <td>1.52s</td>
+                        <td>Answer quality evaluation successful. Score: 3.0/5.0</td>
+                    </tr>
+                    <tr>
+                        <td>TC019</td>
+                        <td>System Integration Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                    <tr>
+                        <td>TC020</td>
+                        <td>Configuration Validation Test</td>
+                        <td class="status-skip">SKIP</td>
+                        <td>0.00s</td>
+                        <td>Not implemented</td>
+                    </tr>
+                </tbody>
+    </table>
+</body>
+</html>
