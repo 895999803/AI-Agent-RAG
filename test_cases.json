@@ -1,0 +1,255 @@
+[
+  {
+    "test_id": "TC001",
+    "test_name": "Database Connection Test",
+    "description": "Test database connection establishment",
+    "input": {},
+    "expected_output": {
+      "connection_status": "success",
+      "error_message": null
+    }
+  },
+  {
+    "test_id": "TC002",
+    "test_name": "Database Table Creation Test",
+    "description": "Test database table creation when it doesn't exist",
+    "input": {
+      "table_exists": false
+    },
+    "expected_output": {
+      "table_created": true,
+      "table_name": "document_embeddings"
+    }
+  },
+  {
+    "test_id": "TC003",
+    "test_name": "Database Table Skip Test",
+    "description": "Test skipping table creation when it already exists",
+    "input": {
+      "table_exists": true
+    },
+    "expected_output": {
+      "table_created": false,
+      "message": "Table already exists"
+    }
+  },
+  {
+    "test_id": "TC004",
+    "test_name": "Document Processing Test",
+    "description": "Test PDF document processing into chunks",
+    "input": {
+      "document_path": "documents/document.pdf"
+    },
+    "expected_output": {
+      "chunks_count": ">= 1",
+      "chunk_size": "1000 characters",
+      "overlap_size": "200 characters"
+    }
+  },
+  {
+    "test_id": "TC005",
+    "test_name": "Embedding Generation Test",
+    "description": "Test embedding generation for text chunks",
+    "input": {
+      "text": "This is a test document chunk for embedding generation"
+    },
+    "expected_output": {
+      "embedding_dimension": 384,
+      "embedding_type": "list",
+      "embedding_values": "float numbers"
+    }
+  },
+  {
+    "test_id": "TC006",
+    "test_name": "Embedding Storage Test",
+    "description": "Test storing embeddings in database",
+    "input": {
+      "content": "Test content",
+      "embedding": [0.1, 0.2, 0.3]
+    },
+    "expected_output": {
+      "storage_status": "success",
+      "rows_affected": 1
+    }
+  },
+  {
+    "test_id": "TC007",
+    "test_name": "Duplicate Content Detection Test",
+    "description": "Test detection of duplicate content in database",
+    "input": {
+      "content": "Existing content in database"
+    },
+    "expected_output": {
+      "is_duplicate": true,
+      "should_store": false
+    }
+  },
+  {
+    "test_id": "TC008",
+    "test_name": "New Content Storage Test",
+    "description": "Test storing new content that doesn't exist in database",
+    "input": {
+      "content": "New unique content"
+    },
+    "expected_output": {
+      "is_duplicate": false,
+      "storage_status": "success"
+    }
+  },
+  {
+    "test_id": "TC009",
+    "test_name": "Similar Document Retrieval Test",
+    "description": "Test retrieving similar documents using embeddings",
+    "input": {
+      "query_embedding": [0.1, 0.2, 0.3],
+      "top_k": 5
+    },
+    "expected_output": {
+      "retrieved_documents": ">= 1",
+      "documents_type": "list of strings"
+    }
+  },
+  {
+    "test_id": "TC010",
+    "test_name": "LLM Answer Generation Test",
+    "description": "Test LLM answer generation for given question and context",
+    "input": {
+      "question": "What is this document about?",
+      "context": "Document content here"
+    },
+    "expected_output": {
+      "answer_length": ">= 50 characters",
+      "answer_type": "string",
+      "answer_relevance": "high"
+    }
+  },
+  {
+    "test_id": "TC011",
+    "test_name": "Empty Query Handling Test",
+    "description": "Test handling of empty or null queries",
+    "input": {
+      "query": ""
+    },
+    "expected_output": {
+      "error_handled": true,
+      "error_message": "Query cannot be empty"
+    }
+  },
+  {
+    "test_id": "TC012",
+    "test_name": "Large Document Processing Test",
+    "description": "Test processing of large documents with multiple chunks",
+    "input": {
+      "document_size": "large (>10MB)"
+    },
+    "expected_output": {
+      "processing_status": "success",
+      "chunk_count": ">= 10",
+      "processing_time": "< 5 minutes"
+    }
+  },
+  {
+    "test_id": "TC013",
+    "test_name": "Multiple Document Ingestion Test",
+    "description": "Test ingesting multiple documents into the same database",
+    "input": {
+      "documents": ["doc1.pdf", "doc2.pdf", "doc3.pdf"]
+    },
+    "expected_output": {
+      "total_chunks": "sum of all document chunks",
+      "no_duplicates": true,
+      "database_integrity": "maintained"
+    }
+  },
+  {
+    "test_id": "TC014",
+    "test_name": "Database Query Performance Test",
+    "description": "Test query performance with large dataset",
+    "input": {
+      "database_size": "1000+ chunks"
+    },
+    "expected_output": {
+      "query_time": "< 2 seconds",
+      "retrieval_accuracy": "high",
+      "system_stability": "maintained"
+    }
+  },
+  {
+    "test_id": "TC015",
+    "test_name": "Error Handling Test",
+    "description": "Test error handling for various failure scenarios",
+    "input": {
+      "error_scenarios": ["invalid_pdf", "network_failure", "database_down"]
+    },
+    "expected_output": {
+      "error_messages": "clear and descriptive",
+      "system_recovery": "graceful",
+      "data_integrity": "preserved"
+    }
+  },
+  {
+    "test_id": "TC016",
+    "test_name": "Memory Usage Test",
+    "description": "Test memory usage during document processing",
+    "input": {
+      "document_size": "medium (1-5MB)"
+    },
+    "expected_output": {
+      "memory_usage": "< 500MB",
+      "no_memory_leaks": true,
+      "system_performance": "stable"
+    }
+  },
+  {
+    "test_id": "TC017",
+    "test_name": "Concurrent Access Test",
+    "description": "Test concurrent access to database and system",
+    "input": {
+      "concurrent_users": 5
+    },
+    "expected_output": {
+      "concurrent_access": "supported",
+      "data_consistency": "maintained",
+      "performance_degradation": "< 20%"
+    }
+  },
+  {
+    "test_id": "TC018",
+    "test_name": "Answer Quality Test",
+    "description": "Test quality and relevance of generated answers",
+    "input": {
+      "test_questions": ["What is the main topic?", "How does it work?", "What are the benefits?"]
+    },
+    "expected_output": {
+      "answer_relevance": "high (>80%)",
+      "answer_coherence": "good",
+      "answer_accuracy": "high"
+    }
+  },
+  {
+    "test_id": "TC019",
+    "test_name": "System Integration Test",
+    "description": "Test integration between all components",
+    "input": {
+      "full_workflow": true
+    },
+    "expected_output": {
+      "workflow_success": true,
+      "component_communication": "seamless",
+      "end_to_end_functionality": "working"
+    }
+  },
+  {
+    "test_id": "TC020",
+    "test_name": "Configuration Validation Test",
+    "description": "Test validation of configuration parameters",
+    "input": {
+      "config_file": ".env"
+    },
+    "expected_output": {
+      "config_validation": "passed",
+      "required_params": "present",
+      "param_values": "valid"
+    }
+  }
+]
