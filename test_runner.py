@@ -218,7 +218,6 @@ class RAGTestRunner:
     def test_document_processing(self, input_data: Dict) -> Dict:
         """Test document processing"""
         try:
-            document_path = input_data.get('document_path', 'documents/d_1.pdf')
             if not os.path.exists(document_path):
                 return {
                     'test_id': 'TC004',

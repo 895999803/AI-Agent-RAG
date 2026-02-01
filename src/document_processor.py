@@ -64,14 +64,7 @@ def extract_text_from_pdf(pdf_path):
         with open(pdf_path, "rb") as file:
             reader = PdfReader(file)
             for page_num in range(len(reader.pages)):
-                page_text = reader.pages[page_num].extract_text()
-                if page_text:
-                    text += page_text
-        # Clean the text to remove problematic characters
-        # Remove NUL characters and other control characters
-        cleaned_text = ''.join(char for char in text if ord(char) >= 32 or char in '\t\n\r')
         logging.info(f"Extracted text from {pdf_path}.")
-        return cleaned_text
     except Exception as e:
         logging.error(f"Error extracting text from PDF {pdf_path}: {e}")
         raise
@@ -93,45 +86,4 @@ def process_document(pdf_path):
     raw_text = extract_text_from_pdf(pdf_path)
     chunks = chunk_text(raw_text)
     logging.info(f"Document processing complete. {len(chunks)} chunks generated.")
-    
-    # Add source file metadata to each chunk
-    source_file = os.path.basename(pdf_path)
-    chunks_with_metadata = [(chunk, source_file) for chunk in chunks]
-    
-    return chunks_with_metadata
-
-
-def process_all_documents(documents_dir):
-    """
-    Process all PDF files in the documents directory.
-    Returns a list of tuples: (chunk_text, source_filename)
-    """
-    all_chunks_with_metadata = []
-    documents_path = os.path.join(os.path.dirname(__file__), '..', documents_dir)
-    
-    if not os.path.exists(documents_path):
-        logging.error(f"Documents directory not found: {documents_path}")
-        raise FileNotFoundError(f"Documents directory not found: {documents_path}")
-    
-    pdf_files = [f for f in os.listdir(documents_path) if f.endswith('.pdf')]
-    
-    if not pdf_files:
-        logging.warning(f"No PDF files found in {documents_path}")
-        return []
-    
-    logging.info(f"Found {len(pdf_files)} PDF files to process: {pdf_files}")
-    
-    for pdf_file in pdf_files:
-        pdf_path = os.path.join(documents_path, pdf_file)
-        try:
-            chunks_with_metadata = process_document(pdf_path)
-            # Add metadata (source filename) to each chunk
-            for chunk, source_file in chunks_with_metadata:
-                all_chunks_with_metadata.append((chunk, source_file))
-        except Exception as e:
-            logging.error(f"Failed to process {pdf_file}: {e}")
-            continue
-    
-    logging.info(f"Successfully processed {len(all_chunks_with_metadata)} chunks from {len(pdf_files)} documents.")
-    return all_chunks_with_metadata
 

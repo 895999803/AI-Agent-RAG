@@ -1,9 +1,3 @@
-import sys
-import os
-
-# Add the src directory to the Python path so we can import modules
-sys.path.append(os.path.join(os.path.dirname(__file__)))
-
 from sentence_transformers import SentenceTransformer
 from src.config import EMBEDDING_MODEL
 import logging

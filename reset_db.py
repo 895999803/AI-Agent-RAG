@@ -72,14 +72,10 @@ def reset_database_table():
         conn.commit()
         logging.info("[SUCCESS] Old table dropped")
 
-        # Create new table with correct dimensions and metadata
-        logging.info(f"Creating new table '{COLLECTION_NAME}' with {EMBEDDING_DIMENSION} dimensions and metadata...")
         cur.execute(f"""
             CREATE TABLE {COLLECTION_NAME} (
                 id serial PRIMARY KEY,
                 content TEXT NOT NULL,
-                embedding VECTOR({EMBEDDING_DIMENSION}),
-                metadata JSONB
             );
         """)
         conn.commit()

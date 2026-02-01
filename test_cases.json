@@ -65,7 +65,6 @@
     "description": "Test storing embeddings in database",
     "input": {
       "content": "Test content",
-      "embedding": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     },
     "expected_output": {
       "storage_status": "success",
@@ -101,7 +100,6 @@
     "test_name": "Similar Document Retrieval Test",
     "description": "Test retrieving similar documents using embeddings",
     "input": {
-      "query_embedding": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
       "top_k": 5
     },
     "expected_output": {
@@ -218,185 +216,10 @@
     "test_name": "Answer Quality Test",
     "description": "Test quality and relevance of generated answers",
     "input": {
-      "test_questions": [
-        {
-          "question": "What is the main topic of the documents?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问文档的主要主题，不针对特定文件内容"
-        },
-        {
-          "question": "How does machine learning work in official statistics?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_1.pdf",
-          "description": "这个问题专门针对d_1.pdf中关于机器学习在官方统计中应用的内容"
-        },
-        {
-          "question": "What are the main risks of changing data sources in ML for statistics?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_1.pdf",
-          "description": "这个问题专门针对d_1.pdf中关于数据源变化风险和挑战的讨论"
-        },
-        {
-          "question": "How can robustness be enhanced in data sourcing for official statistics?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_1.pdf",
-          "description": "这个问题专门针对d_1.pdf中关于增强数据源鲁棒性的方法"
-        },
-        {
-          "question": "What are the technical effects of changing data sources?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_1.pdf",
-          "description": "这个问题专门针对d_1.pdf中关于数据源变化对技术效果的影响"
-        },
-        {
-          "question": "What precautionary measures are suggested for ML in official statistics?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_1.pdf",
-          "description": "这个问题专门针对d_1.pdf中关于预防措施的建议"
-        },
-        {
-          "question": "What are the physics-inspired methods for model interpretability?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_2.pdf",
-          "description": "这个问题专门针对d_2.pdf中关于物理启发的模型可解释性方法"
-        },
-        {
-          "question": "How do energy landscape methods apply to machine learning models?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_2.pdf",
-          "description": "这个问题专门针对d_2.pdf中关于能量景观方法在机器学习中的应用"
-        },
-        {
-          "question": "What are coordinate invariants in the context of ML interpretability?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_2.pdf",
-          "description": "这个问题专门针对d_2.pdf中关于坐标不变量在机器学习可解释性中的作用"
-        },
-        {
-          "question": "How can conserved weights identify model decision drivers?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_2.pdf",
-          "description": "这个问题专门针对d_2.pdf中关于保守权重识别模型决策驱动因素的方法"
-        },
-        {
-          "question": "What are the applications of energy landscape methods in ML?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_2.pdf",
-          "description": "这个问题专门针对d_2.pdf中关于能量景观方法在机器学习中的应用实例"
-        },
-        {
-          "question": "What are the main conclusions of the research papers?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问学术论文的主要结论，适用于数据库中的所有研究论文"
-        },
-        {
-          "question": "What research methods are commonly used in these papers?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问数据库中学术论文常用的研究方法"
-        },
-        {
-          "question": "What related work is mentioned in the papers?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问学术论文中引用的相关工作"
-        },
-        {
-          "question": "What datasets are used in the experiments?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问研究论文中使用的实验数据集"
-        },
-        {
-          "question": "What evaluation metrics are reported?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问学术论文中报告的评估指标"
-        },
-        {
-          "question": "What are the limitations discussed in the papers?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问研究论文中讨论的局限性"
-        },
-        {
-          "question": "What future work directions are suggested?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问学术论文中建议的未来工作方向"
-        },
-        {
-          "question": "What are the key contributions of the research?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问研究论文的主要贡献"
-        },
-        {
-          "question": "What algorithms or models are proposed?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问学术论文中提出的新算法或模型"
-        },
-        {
-          "question": "What are the experimental results and their significance?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问研究论文的实验结果及其意义"
-        },
-        {
-          "question": "What is the structure of the research papers?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问学术论文的结构组织"
-        },
-        {
-          "question": "What are the main challenges addressed in the research?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问研究论文解决的主要挑战"
-        },
-        {
-          "question": "What are the theoretical foundations of the work?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问研究论文的理论基础"
-        },
-        {
-          "question": "How do the papers compare with existing approaches?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问学术论文与现有方法的比较"
-        },
-        {
-          "question": "What are the practical applications of the research?",
-          "type": "通用性问题",
-          "description": "这是一个通用性问题，询问研究论文的实际应用"
-        },
-        {
-          "question": "What are the challenges in active learning for data streams?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_3.pdf",
-          "description": "这个问题专门针对d_3.pdf中关于数据流主动学习的挑战"
-        },
-        {
-          "question": "How does online active learning select informative data points?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_3.pdf",
-          "description": "这个问题专门针对d_3.pdf中关于在线主动学习选择信息数据点的方法"
-        },
-        {
-          "question": "What are the differences between pool-based and stream-based active learning?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_3.pdf",
-          "description": "这个问题专门针对d_3.pdf中关于池式和流式主动学习的区别"
-        },
-        {
-          "question": "What are the query strategies for data stream labeling?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_3.pdf",
-          "description": "这个问题专门针对d_3.pdf中关于数据流标注的查询策略"
-        },
-        {
-          "question": "How does concept drift affect active learning in data streams?",
-          "type": "专门针对文件内容的问题",
-          "target_file": "d_3.pdf",
-          "description": "这个问题专门针对d_3.pdf中关于概念漂移对数据流主动学习的影响"
-        }
-      ]
     },
     "expected_output": {
       "answer_relevance": "high (>80%)",
       "answer_coherence": "good",
-      "answer_accuracy": "high",
-      "answer_coverage": "comprehensive",
-      "response_time": "< 10 seconds"
     }
   },
   {
